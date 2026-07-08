@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>答え入力テスト</title>
+  <style>
+    body {
+      font-family: "MS Mincho", serif;
+      text-align: center; /* ← 全体を中央寄せ */
+    }
+    button {
+      font-family: "MS Mincho", serif;
+      font-size: 30px;
+      padding: 6px 12px;
+    }
+    .input-box {
+      width: 300px;      /* ← 入力欄の横幅を大きくする */
+      font-size: 18px;   /* ← 文字も少し大きく */
+      padding: 6px;      /* ← 内側の余白で見やすく */
+      font-family: "MS Mincho", serif; /* ← 明朝体 */
+      text-align: center; /* ← 入力文字も中央寄せ */
+    }
+    .message {
+      font-size: 50px;
+      margin-top: 10px;
+      display: none;
+    }
+    .success {
+      color: red;
+    }
+    .error {
+      color: purple;
+    }
+    .hint {
+      margin-top: 50px;
+      font-size: 50px;
+      color: blue;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="toggleHint()">ヒントはここから</button>
+  <div id="hintMessage" class="hint">せいかいと入力すると？</div>
+
+  <br><br>
+
+  <input type="text" id="answerInput" placeholder="ここに入力"class="input-box">>
+  <button onclick="checkAnswer()">決定</button>
+
+  <div id="successMessage" class="message success">脱出成功！</div>
+  <div id="errorMessage" class="message error">何かが間違っているようだ</div>
+
+  <script>
+    function toggleHint() {
+      const hint = document.getElementById('hintMessage');
+      //* 表示されているなら消す、消えているなら表示する */
+      hint.style.display = (hint.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function checkAnswer() {
+      const input = document.getElementById('answerInput').value.trim();
+      const success = document.getElementById('successMessage');
+      const error = document.getElementById('errorMessage');
+
+      if (input === 'せいかい') {
+        success.style.display = 'block';
+        error.style.display = 'none';
+      } else {
+        success.style.display = 'none';
+        error.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
